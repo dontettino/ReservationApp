@@ -1,9 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using ReservationApp_API.Data;
 
 namespace ReservationApp_API.Controllers
@@ -12,25 +8,26 @@ namespace ReservationApp_API.Controllers
     [ApiController]
     public class LessonsController : ControllerBase
     {
-        private readonly DataContext context;
-        public LessonsController(DataContext context)
+        private readonly ILessonRepository repo;
+        public LessonsController(ILessonRepository repo)
         {
-            this.context = context;
-
+            this.repo = repo;
         }
+
         [HttpGet]
         public async Task<IActionResult> GetLessons()
         {
-            var lessons = await this.context.Lessons.ToListAsync();
+            var users = await this.repo.GetLessonsAsync();
 
-            return Ok(lessons);
+            return Ok(users);
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetLesson(int id)
         {
-            var lesson = await this.context.Lessons.FirstOrDefaultAsync(x => x.Id == id);
-            return Ok(lesson);
+            var user = await this.repo.GetLesson(id);
+
+            return Ok(user);
         }
     }
 }

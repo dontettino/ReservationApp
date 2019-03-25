@@ -11,5 +11,6 @@ namespace ReservationApp_API.Data
         public DbSet<User> Users { get; set; }
         public DbSet<Role> Roles { get; set; }
         public DbSet<Hall> Halls { get; set; }
+        public DbSet<Reservation> Reservations { get; set; }
     }
 }

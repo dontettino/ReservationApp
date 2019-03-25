@@ -43,13 +43,39 @@ namespace ReservationApp_API.Migrations
 
                     b.Property<int>("LectorId");
 
-                    b.Property<string>("LessonTime");
-
                     b.Property<string>("Name");
+
+                    b.Property<int>("Price");
+
+                    b.Property<string>("TimeInterval");
+
+                    b.Property<int>("WeekDay");
 
                     b.HasKey("Id");
 
                     b.ToTable("Lessons");
+                });
+
+            modelBuilder.Entity("ReservationApp_API.Models.Reservation", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<TimeSpan>("LessonEndTime");
+
+                    b.Property<int>("LessonId");
+
+                    b.Property<TimeSpan>("LessonStartTime");
+
+                    b.Property<DateTime>("ReservationDate");
+
+                    b.Property<int>("UserId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Reservations");
                 });
 
             modelBuilder.Entity("ReservationApp_API.Models.Role", b =>
@@ -69,6 +95,12 @@ namespace ReservationApp_API.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<int>("AccountBallacne");
+
+                    b.Property<DateTime>("Created");
+
+                    b.Property<DateTime>("DateOfBirth");
+
                     b.Property<bool>("IsEnabled");
 
                     b.Property<byte[]>("PasswordHash");
@@ -82,6 +114,14 @@ namespace ReservationApp_API.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("ReservationApp_API.Models.Reservation", b =>
+                {
+                    b.HasOne("ReservationApp_API.Models.User", "User")
+                        .WithMany("Reservations")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }
