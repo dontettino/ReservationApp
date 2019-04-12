@@ -10,7 +10,7 @@ namespace ReservationApp_API.Data
         // void DeleteLesson(string lesson); TODO
         void DeleteLesson(int id);
         Task<Lesson> GetLesson(int id);
-        Task<IEnumerable<Lesson>> GetLessonsAsync();
+        Task<IEnumerable<Lesson>> GetLessons();
         Task<bool> SaveAll();
     }
 }

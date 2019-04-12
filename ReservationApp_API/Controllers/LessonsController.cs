@@ -17,7 +17,7 @@ namespace ReservationApp_API.Controllers
         [HttpGet]
         public async Task<IActionResult> GetLessons()
         {
-            var users = await this.repo.GetLessonsAsync();
+            var users = await this.repo.GetLessons();
 
             return Ok(users);
         }

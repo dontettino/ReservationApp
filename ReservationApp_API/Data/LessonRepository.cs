@@ -29,7 +29,7 @@ namespace ReservationApp_API.Data
             return lesson;
         }
 
-        public async Task<IEnumerable<Lesson>> GetLessonsAsync()
+        public async Task<IEnumerable<Lesson>> GetLessons()
         {
             var lessons = await this.context.Lessons.ToListAsync();
             return lessons;

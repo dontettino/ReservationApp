@@ -12,7 +12,7 @@ namespace ReservationApp_API.Models
         public int RoleId { get; set; }
         public DateTime DateOfBirth { get; set; }
         public DateTime Created { get; set; }
-        public int AccountBallacne { get; set; }
+        public int AccountBallance { get; set; }
         public ICollection<Reservation> Reservations { get; set; }
         public bool IsEnabled { get; set; }
     }

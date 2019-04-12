@@ -35,7 +35,6 @@ namespace ReservationApp_API
                 });
             services.AddCors();
             services.AddScoped<IAuthRepository, AuthRepository>();
-            services.AddScoped<IAdminRepository, AdminRepository>(); // TODO delete
             services.AddScoped<IUserRepository, UserRepository>();  // TODO delete
             services.AddScoped<ILessonRepository, LessonRepository>();
         }
